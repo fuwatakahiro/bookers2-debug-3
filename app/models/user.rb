@@ -7,6 +7,11 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
+
+  has_many :followers, through: :reverse_of_relationships, source: :follower
+  has_many :reverse_of_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
+  has_many :relationships, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
+  has_many :followings, through: :relationships, source: :followed
   has_one_attached :profile_image
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
@@ -16,5 +21,14 @@ class User < ApplicationRecord
 
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
+  end
+  def follower(user)
+    relationships.create(followed_id: user.id)
+  end
+  def unfollower(user)
+    relationships.find_by(followed_id: user.id).destroy
+  end
+  def following?(user)
+    followings.include?(user)
   end
 end
