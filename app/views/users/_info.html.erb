@@ -8,8 +8,15 @@
 	  <th>introduction</th>
 	  <th><%= user.introduction %></th>
   </tr>
+  <tr>
+    <th>follower</th>
+    <th><%= link_to user.reverse_of_relationships.count, user_followers_path(user.id) %>件</th>
+  </tr>
+  <tr>
+    <th>followings</th>
+    <th><%= link_to  user.relationships.count, user_followings_path(user.id) %>件</th>
+  </tr>
 </table>
-　
 <div class='row'>
   <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
     <i class="fas fa-user-cog"></i>
