@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get "followings" => "relationships#following"
     get "followers" => "relationships#follower"
   end
+  get "seaches" => "seaches#seach"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 end

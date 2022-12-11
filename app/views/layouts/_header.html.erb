@@ -51,6 +51,11 @@
           </li>
         <% end %>
         </ul>
+        <% if user_signed_in? %>
+          <ul>
+            <Li><%= render "seaches/form" %></Li>
+          </ul>
+        <% end %>
       </div>
     </div>
   </nav>
