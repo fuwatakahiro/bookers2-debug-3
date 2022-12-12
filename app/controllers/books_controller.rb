@@ -9,7 +9,9 @@ before_action :ensure_current_book, only: [:destroy, :edit]
   end
 
   def index
-    @books = Book.all
+    to = Time.current.at_end_of_day
+    from = (to - 6.day).at_beginning_of_day
+    @books = Book.where(created_at: from...to).order("favorites_count DESC")
     @book = Book.new
   end
 
