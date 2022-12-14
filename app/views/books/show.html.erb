@@ -33,6 +33,7 @@
             <% end %>
           </th>
           <th>コメント数:<%= @book_comments.count %></th>
+          <th><%= @book.view_counts.count %>人</th>
         </tr>
       </table>
       <% @book_comments.each do |book_comment| %>
