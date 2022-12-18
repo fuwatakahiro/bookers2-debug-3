@@ -1,0 +1,19 @@
+<div class="container">
+  <%= form_with model: @group do |f| %>
+    <div class="">
+      <%= f.label :グループ名 %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="">
+      <%= f.label :紹介文 %>
+      <%= f.text_area :introduction %>
+    </div>
+    <div class="">
+      <%= f.label :画像 %>
+      <%= f.file_field :group_image %>
+    </div>
+    <div class="">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>
