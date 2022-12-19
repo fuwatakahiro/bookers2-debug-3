@@ -1,0 +1,19 @@
+<div class="d-flex justify-content-center">
+  <%= form_with model: group do |f| %>
+    <div class="form-group row">
+      <%= f.label :グループ名, class: "col-form-label col-4" %>
+      <%= f.text_field :name, class: "form-control col-8" %>
+    </div>
+    <div class="form-group row">
+      <%= f.label :紹介文, class: "col-form-label col-4" %>
+      <%= f.text_area :introduction, class: "form-control col-8" %>
+    </div>
+    <div class="form-group row">
+      <%= f.label :画像, class: "col-form-label col-4" %>
+      <%= f.file_field :group_image, class: "col-8" %>
+    </div>
+    <div class="text-center">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

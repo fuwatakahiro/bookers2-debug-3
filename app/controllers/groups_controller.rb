@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
   before_action :ensure_corrent_user, only: [:edit, :update]
   def index
     @groups = Group.all
-    @book = Book.all
+    @book = Book.new
   end
   def new
     @group = Group.new
@@ -41,7 +41,7 @@ class GroupsController < ApplicationController
     params.require(:group).permit(:name, :introduction, :owner_id, :group_image)
   end
   def ensure_corrent_user
-    group = Group.find(parsm[:id])
+    group = Group.find(params[:id])
     user = group.owner_id
     unless user == current_user.id
       redirect_to groups_path
